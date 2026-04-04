@@ -6,26 +6,26 @@ class String
 {
 private:
     char *str;
-    int len;
+    int Len;
 
 public:
     String()
     {
-        len = 0;
+        Len = 0;
         str = new char[1]{'\0'};
     }
 
     String(const char *s)
     {
-        len = strlen(s);
-        str = new char[len + 1];
+        Len = strlen(s);
+        str = new char[Len + 1];
         strcpy(str, s);
     }
 
     String(const String &other)
     {
-        len = other.len;
-        str = new char[len + 1];
+        Len = other.Len;
+        str = new char[Len + 1];
         strcpy(str, other.str);
     }
     ~String()
@@ -34,12 +34,12 @@ public:
     }
     int ChieuDaiChuoi()
     {
-        return len;
+        return Len;
     }
 
     String NoiChuoi(String s2)
     {
-        char *tam = new char[len + s2.len + 1];
+        char *tam = new char[Len + s2.Len + 1];
         strcpy(tam, str);
         strcat(tam, s2.str);
 
@@ -50,21 +50,21 @@ public:
 
     void DaoChuoi()
     {
-        for (int i = 0; i < len / 2; i++)
+        for (int i = 0; i < Len / 2; i++)
         {
-            swap(str[i], str[len - 1 - i]);
+            swap(str[i], str[Len - 1 - i]);
         }
     }
 
     void InHoa()
     {
-        for (int i = 0; i < len; i++)
+        for (int i = 0; i < Len; i++)
             str[i] = toupper(str[i]);
     }
 
     void InThuong()
     {
-        for (int i = 0; i < len; i++)
+        for (int i = 0; i < Len; i++)
             str[i] = tolower(str[i]);
     }
 
@@ -74,12 +74,12 @@ public:
         cin.getline(tam, 1000);
 
         delete[] str;
-        len = strlen(tam);
-        str = new char[len + 1];
+        Len = strlen(tam);
+        str = new char[Len + 1];
         strcpy(str, tam);
     }
 
-    void xuat()
+    void XuatChuoi()
     {
         cout << str;
     }
@@ -96,19 +96,19 @@ int main()
     cout << "1. Chieu dai s1: " << s1.ChieuDaiChuoi() << "\n";
     String s3 = s1.NoiChuoi(s2);
     cout << "2. Noi voi s2: ";
-    s3.xuat();
+    s3.XuatChuoi();
     cout << "\n";
     s1.DaoChuoi();
     cout << "3. Dao chuoi s1: ";
-    s1.xuat();
+    s1.XuatChuoi();
     cout << "\n";
     s1.InHoa();
     cout << "4. In hoa s1: ";
-    s1.xuat();
+    s1.XuatChuoi();
     cout << "\n";
     s1.InThuong();
     cout << "5. In thuong s1: ";
-    s1.xuat();
+    s1.XuatChuoi();
     cout << "\n";
 
     return 0;
