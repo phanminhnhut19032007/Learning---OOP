@@ -9,13 +9,43 @@ private:
     int ngay;
     int thang;
     int nam;
+    int SoNgayTrongTuan(int m, int y)
+    {
+        switch (m)
+        {
+        case 4:
+        case 6:
+        case 9:
+        case 11:
+            return 30;
+        case 2:
+            return LaNamNhuan(y) ? 29 : 28;
+        default:
+            return 31;
+        }
+    }
+    bool LaNamNhuan(int y)
+    {
+        return (y % 4 == 0 && y % 100 != 0) || (y % 400 == 0);
+    }
 
 public:
+    DateOfWeek(int d = 1, int m = 1, int y = 2024) : ngay(d), thang(m), nam(y) {}
+
     void NhapNgayThangNam();
     void NgayTrongTuan();
     int GetNgay();
     int GetThang();
     int GetNam();
+    void SetNgay(int d);
+    void SetThang(int m);
+    void SetNam(int y);
+    void TangNgay(int d);
+    void GiamNgay(int d);
+    void TangThang(int m);
+    void GiamThang(int m);
+    void TangNam(int y);
+    void GiamNam(int y);
 };
 
 int DateOfWeek::GetNgay()
@@ -31,6 +61,18 @@ int DateOfWeek::GetThang()
 int DateOfWeek::GetNam()
 {
     return this->nam;
+}
+void DateOfWeek::SetNgay(int d)
+{
+    this->ngay = d;
+}
+void DateOfWeek::SetThang(int m)
+{
+    this->thang = m;
+}
+void DateOfWeek::SetNam(int y)
+{
+    this->nam = y;
 }
 
 void DateOfWeek::NhapNgayThangNam()
@@ -115,6 +157,76 @@ void DateOfWeek::NgayTrongTuan()
     cout << "Ngay " << this->ngay << "/" << this->thang << "/" << this->nam << " la: " << Thu[h] << endl;
 }
 
+void DateOfWeek::TangNgay(int d)
+{
+    this->ngay += d;
+    while (this->ngay > SoNgayTrongTuan(this->thang, this->nam))
+    {
+        this->ngay -= SoNgayTrongTuan(this->thang, this->nam);
+        this->thang++;
+        if (this->thang > 12)
+        {
+            this->thang = 1;
+            this->nam++;
+        }
+    }
+}
+
+void DateOfWeek::GiamNgay(int d)
+{
+    this->ngay -= d;
+    while (this->ngay < 1)
+    {
+        this->thang--;
+        if (this->thang < 1)
+        {
+            this->thang = 12;
+            this->nam--;
+        }
+        this->ngay += SoNgayTrongTuan(this->thang, this->nam);
+    }
+}
+
+void DateOfWeek::TangThang(int m)
+{
+    this->thang += m;
+    while (this->thang > 12)
+    {
+        this->thang -= 12;
+        this->nam++;
+    }
+    int maxD = SoNgayTrongTuan(this->thang, this->nam);
+    if (this->ngay > maxD)
+        this->ngay = maxD;
+}
+
+void DateOfWeek::GiamThang(int m)
+{
+    this->thang -= m;
+    while (this->thang < 1)
+    {
+        this->thang += 12;
+        this->nam--;
+    }
+    int maxD = SoNgayTrongTuan(this->thang, this->nam);
+    if (this->ngay > maxD)
+        this->ngay = maxD;
+}
+
+void DateOfWeek::TangNam(int y)
+{
+    this->nam += y;
+    int maxD = SoNgayTrongTuan(this->thang, this->nam);
+    if (this->ngay > maxD)
+        this->ngay = maxD;
+}
+void DateOfWeek::GiamNam(int y)
+{
+    this->nam -= y;
+    int maxD = SoNgayTrongTuan(this->thang, this->nam);
+    if (this->ngay > maxD)
+        this->ngay = maxD;
+}
 int main()
 {
     DateOfWeek date;
@@ -126,7 +238,77 @@ int main()
     else
     {
         cout << "Ban nhap sai,vui long nhap lai!" << endl;
+        do
+        {
+            cout << "Nhap lai ngay thang nam: " << endl;
+            date.NhapNgayThangNam();
+        } while (!KiemTraNgayThangNamHopLe(date.GetNgay(), date.GetThang(), date.GetNam()));
+        date.NgayTrongTuan();
     }
+    cout << "--Vui long chon thanh phan muon thay doi-- " << endl;
+    cout << "1.Tang Ngay" << endl;
+    cout << "2.Giam Ngay" << endl;
+    cout << "3.Tang Thang" << endl;
+    cout << "4.Giam Thang" << endl;
+    cout << "5.Tang Nam" << endl;
+    cout << "6.Giam Nam" << endl;
+    int k;
+    cin >> k;
+    switch (k)
+    {
+    case 1:
+    {
+        int k;
+        cout << "Nhap ngay muon tang them: ";
+        cin >> k;
 
+        date.TangNgay(k);
+        break;
+    }
+    case 2:
+    {
+        int k;
+        cout << "Nhap ngay muon giam bot: ";
+        cin >> k;
+        date.GiamNgay(k);
+        break;
+    }
+    case 3:
+    {
+        int k;
+        cout << "Nhap thang muon tang them: ";
+        cin >> k;
+        date.TangThang(k);
+        break;
+    }
+    case 4:
+    {
+        int k;
+        cout << "Nhap thang muon giam bot: ";
+        cin >> k;
+        date.GiamThang(k);
+        break;
+    }
+    case 5:
+    {
+        int k;
+        cout << "Nhap nam muon tang them: ";
+        cin >> k;
+        date.TangNam(k);
+        break;
+    }
+    case 6:
+    {
+        int k;
+        cout << "Nhap nam muon giam bot: ";
+        cin >> k;
+        date.GiamNam(k);
+
+        break;
+    }
+    }
+    cout << "Ngay sau khi thay doi la: " << date.GetNgay() << "/" << date.GetThang() << "/" << date.GetNam() << endl;
+
+    date.NgayTrongTuan();
     return 0;
 }

@@ -25,8 +25,34 @@ public:
         this->Gia = gia;
         this->DungTich = Dungtich;
     }
-    void NhapThongTin();
+    void NhapThongTin()
+    {
 
+        cout << "Moi ban nhap ten chu xe :";
+        getline(cin, this->ChuXe);
+        cout << "Moi ban nhap loai xe: ";
+        getline(cin, this->Loai);
+        cout << "Moi ban nhap gia xe(trieu dong):";
+        cin >> this->Gia;
+        cout << "Moi ban nhap dung tich cua xe:";
+        cin >> this->DungTich;
+    }
+    void NhapGia()
+    {
+        do
+        {
+            cout << "Nhap gia xe:";
+            cin >> this->Gia;
+        } while (this->Gia < 0);
+    }
+    void NhapXyLanh()
+    {
+        do
+        {
+            cout << "Nhap dung tich xe:";
+            cin >> this->DungTich;
+        } while (this->DungTich < 0);
+    }
     int GetXyLanh()
     {
         return this->DungTich;
@@ -47,30 +73,30 @@ public:
 
         return thue;
     }
+
+    void XuatThongTin(double thue)
+    {
+        cout << "Ten cua chu xe la: ";
+        cout << this->ChuXe << endl;
+        cout << "Loai xe: ";
+        cout << this->Loai << endl;
+        cout << "Gia xe: ";
+        cout << this->Gia << " trieu dong" << endl;
+        cout << "Dung tich xe: ";
+        cout << this->DungTich << " cc" << endl;
+        cout << "Tien thue truoc ba: ";
+        cout << thue << " trieu dong" << endl;
+    }
 };
 bool KiemTraGia(double gia)
 {
-    if (gia < 0)
-        return false;
-
-    return true;
+    return gia > 0;
 }
+
 bool KiemTraXyLanh(int xylanh)
 {
-    if (xylanh < 0)
-        return false;
-    return true;
-}
-void Vehicle::NhapThongTin()
-{
-    cout << "Moi ban nhap ten chu xe :";
-    getline(cin, this->ChuXe);
-    cout << "Moi ban nhap loai xe: ";
-    getline(cin, this->Loai);
-    cout << "Moi ban nhap gia : ";
-    cin >> this->Gia;
-    cout << "Moi ban nhap dung tich xylanh:";
-    cin >> this->DungTich;
+
+    return xylanh > 0;
 }
 
 int main()
@@ -80,14 +106,27 @@ int main()
     Vehicle xe3;
     cout << "Nhap thong tin xe 3" << endl;
     xe3.NhapThongTin();
-    if (KiemTraGia(xe3.GetGia()))
-        cout << "Ban da nhap gia xe 3 sai,vui long nhap lai: ";
-    if (KiemTraXyLanh(xe3.GetXyLanh()))
+    cout << endl;
+    if (KiemTraGia(xe3.GetGia()) == false)
     {
-        cout << "Ban da nhap xy lanh xe 3 sai,vui long nhap lai: ";
+        cout << "Thong tin khong hop le!" << endl;
+        cout << "Ban da nhap gia xe 3 sai,vui long nhap lai: " << endl;
+        xe3.NhapGia();
+    }
+    if (KiemTraXyLanh(xe3.GetXyLanh()) == false)
+    {
+        cout << "Thong tin khong hop le!" << endl;
+        cout << "Ban da nhap dung tich xe 3 sai,vui long nhap lai: " << endl;
+        xe3.NhapXyLanh();
     }
 
-    cout << "Bang ke khia thong tin chi tiet va ";
+    cout << "\nBang ke khia thong tin chi tiet va tien thue truoc ba" << endl;
+    cout << "\nThong tin chi tiet va thue truoc ba cua xe 1 " << endl;
+    xe1.XuatThongTin(xe1.TinhThue());
+    cout << "\nThong tin chi tiet va thue truoc ba cua xe 2 " << endl;
+    xe2.XuatThongTin(xe2.TinhThue());
+    cout << "\nThong tin chi tiet va thue truoc ba cua xe 3 " << endl;
+    xe3.XuatThongTin(xe3.TinhThue());
 
     return 0;
 }
