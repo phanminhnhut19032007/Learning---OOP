@@ -50,7 +50,7 @@ public:
     double TinhGiaTriBieuThuc(double x);
     friend istream &operator>>(istream &is, DaThuc &a)
     {
-        cout << "Nhap bac cua da thu: ";
+        cout << "Nhap bac cua da thuc: ";
         is >> a.n;
 
         a.HeSo = new double[a.n + 1];
