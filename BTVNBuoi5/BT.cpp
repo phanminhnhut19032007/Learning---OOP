@@ -14,7 +14,7 @@ public:
     {
         n = 0;
         HeSo = new double[1];
-        HeSo[1] = 0;
+        HeSo[0] = 0;
     }
     DaThuc(int bac)
     {
@@ -25,7 +25,7 @@ public:
             HeSo[i] = 0;
         }
     }
-    DaThuc(const DaThuc &other)
+    DaThuc(DaThuc &other)
     {
         n = other.n;
         HeSo = new double[n + 1];
@@ -34,7 +34,8 @@ public:
             HeSo[i] = other.HeSo[i];
         }
     }
-    DaThuc &operator=(DaThuc &other)
+
+    DaThuc &operator=(const DaThuc &other)
     {
         if (this != &other)
         {
@@ -46,13 +47,14 @@ public:
                 HeSo[i] = other.HeSo[i];
             }
         }
+        return *this;
     }
     double TinhGiaTriBieuThuc(double x);
     friend istream &operator>>(istream &is, DaThuc &a)
     {
         cout << "Nhap bac cua da thuc: ";
         is >> a.n;
-
+        delete[] a.HeSo;
         a.HeSo = new double[a.n + 1];
         cout << "Nhap cac he so: " << endl;
         for (int i = a.n; i >= 0; i--)
