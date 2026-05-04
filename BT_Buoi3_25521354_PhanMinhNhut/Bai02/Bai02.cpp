@@ -37,11 +37,14 @@ public:
         this->x += dx;
         this->y += dy;
     }
+
+
     void PhongTo(double k)
     {
         this->x *= k;
         this->y *= k;
     }
+    
     void ThuNho(double l)
     {
         this->x /= l;
@@ -98,6 +101,8 @@ public:
         }
     }
 
+
+
     void XuatDaGiac()
     {
         if (n == 0 || dinh == nullptr)
@@ -114,6 +119,8 @@ public:
         }
     }
 
+
+
     double TinhChuVi()
     {
         if (n < 3)
@@ -127,6 +134,8 @@ public:
         }
         return chuvi;
     }
+
+
 
     double TinhDienTich()
     {
@@ -155,6 +164,7 @@ public:
         cout << "-> Da tinh tien da giac thanh cong.\n";
     }
 
+
     void PhongToDaGiac()
     {
         double k;
@@ -164,8 +174,9 @@ public:
         {
             dinh[i].PhongTo(k);
         }
-        cout << "-> Da phong to da giac thanh cong.\n";
+        cout << "Da phong to da giac thanh cong.\n";
     }
+
 
     void ThuNhoDaGiac()
     {
@@ -180,8 +191,10 @@ public:
         {
             dinh[i].ThuNho(l);
         }
-        cout << "-> Da thu nho da giac thanh cong.\n";
+        cout << " Da thu nho da giac thanh cong.\n";
     }
+
+
 
     void QuayDaGiac()
     {

@@ -16,6 +16,7 @@ public:
         HeSo = new double[1];
         HeSo[0] = 0;
     }
+
     DaThuc(int bac)
     {
         n = bac;
@@ -72,6 +73,7 @@ public:
         }
         return is;
     }
+
     friend ostream &operator<<(ostream &os, DaThuc a)
     {
         if (a.HeSo[0] == 0 && a.n == 0)
@@ -96,6 +98,7 @@ public:
         }
         return os;
     }
+
     DaThuc operator+(DaThuc &other)
     {
         int bac = max(this->n, other.n);
@@ -108,6 +111,7 @@ public:
         }
         return result;
     }
+
     DaThuc operator-(DaThuc &other)
     {
         int bac = max(this->n, other.n);

@@ -55,6 +55,8 @@ public:
         }
     }
 
+
+
     void Nhap()
     {
         cout << "   Nhap tu so: ";
@@ -76,9 +78,12 @@ public:
         else
             cout << tu << "/" << mau;
     }
+
     ll GetTu() const { 
         return tu; 
     }
+
+
     ll GetMau() const {
          return mau; 
         }
@@ -86,6 +91,8 @@ public:
     {
         return (ll)this->tu * khac.mau < (ll)khac.tu * this->mau;
     }
+
+
 
     bool operator>(const PhanSo &khac) const
     {
@@ -98,6 +105,8 @@ public:
         ll mauMoi = (ll)mau * khac.mau;
         return PhanSo(tuMoi, mauMoi);
     }
+
+
 };
 
 class cDSPhanSo
@@ -121,6 +130,8 @@ public:
         }
     }
 
+
+
     void XuatDS() const
     {
         if (ds.empty())
@@ -137,6 +148,7 @@ public:
         cout << endl;
     }
 
+
     PhanSo TinhTong() const
     {
         PhanSo tong(0, 1);
@@ -144,6 +156,7 @@ public:
             tong = tong.cong(ps);
         return tong;
     }
+
 
     PhanSo TimMax() const
     {
@@ -154,6 +167,7 @@ public:
     {
         return *min_element(ds.begin(), ds.end());
     }
+
 
     void TimPhanSoTuNguyenToMax() const
     {
@@ -182,6 +196,8 @@ public:
         }
     }
 
+
+
     void SapXepTang()
     {
         sort(ds.begin(), ds.end());
@@ -192,7 +208,11 @@ public:
         sort(ds.begin(), ds.end(), greater<PhanSo>());
     }
 
-    bool IsEmpty() const { return ds.empty(); }
+    bool IsEmpty() const 
+    {
+        return ds.empty(); 
+    }
+
 };
 
 int main()
@@ -216,9 +236,12 @@ int main()
 
         if (luaChon >= 2 && luaChon <= 7 && danhSach.IsEmpty())
         {
+            
             cout << "Vui long nhap danh sach truoc (Chon 1)!\n";
             continue;
         }
+
+
 
         switch (luaChon)
         {

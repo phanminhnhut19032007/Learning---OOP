@@ -6,6 +6,7 @@ class cArray
 private:
     int n; 
     int *arr;
+    
     bool KiemTraNguyenTo(int k)
     {
         if (k < 2) return false;
@@ -39,6 +40,8 @@ public:
             delete[] arr;
         }
     }
+
+
     void NhapMang()
     {
         cout << "Nhap so luong phan tu n: ";
@@ -53,6 +56,8 @@ public:
             cin >> arr[i];
         }
     }
+
+
 
     void TaoMangNgauNhien()
     {
@@ -123,6 +128,8 @@ public:
         if (found) cout << "Phan tu le nho nhat trong mang la: " << minLe << "\n";
         else cout << "Khong co so le nao trong mang!\n";
     }
+
+
     void TimNguyenToLonNhat()
     {
         int maxNT = INT_MIN;
@@ -141,6 +148,9 @@ public:
         if (found) cout << "So nguyen to lon nhat trong mang la: " << maxNT << "\n";
         else cout << "Khong co so nguyen to nao trong mang!\n";
     }
+
+
+
     void SapXepTangDan()
     {
         for (int i = 0; i < n - 1; i++)

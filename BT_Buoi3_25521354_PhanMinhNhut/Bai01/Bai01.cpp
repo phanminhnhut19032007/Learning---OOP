@@ -72,13 +72,12 @@ public:
         cout << "Nhap dinh C: \n";
         C.NhapDiem();
     }
-    // Kiem tra
+  
     void KiemTraTamGiac()
     {
         double a = B.TinhDoDaiCanh(C);
         double b = A.TinhDoDaiCanh(C);
         double c = A.TinhDoDaiCanh(B);
-        // Kiem tra
         if (a + b <= c || a + c <= b || b + c <= a)
         {
             cout << "Day khong phai tam giac!";
