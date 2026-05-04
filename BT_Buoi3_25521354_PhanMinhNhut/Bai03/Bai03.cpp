@@ -4,11 +4,8 @@
 #include <cmath>
 
 using namespace std;
-
-// Sử dụng long long cho toàn bộ để tránh tràn số khi tính toán trung gian
 typedef long long ll;
 
-// Hàm hỗ trợ tìm ước chung lớn nhất
 ll TimUCLN(ll a, ll b)
 {
     a = abs(a);
@@ -22,7 +19,6 @@ ll TimUCLN(ll a, ll b)
     return a;
 }
 
-// Hàm hỗ trợ kiểm tra số nguyên tố
 bool LaSoNguyenTo(ll n)
 {
     if (n < 2)
@@ -38,7 +34,7 @@ bool LaSoNguyenTo(ll n)
 class PhanSo
 {
 private:
-    ll tu, mau; // Chuyển sang long long
+    ll tu, mau; 
 public:
     PhanSo(ll t = 0, ll m = 1)
     {
@@ -80,11 +76,12 @@ public:
         else
             cout << tu << "/" << mau;
     }
-
-    ll GetTu() const { return tu; }
-    ll GetMau() const { return mau; }
-
-    // So sánh bằng nhân chéo để đảm bảo chính xác tuyệt đối
+    ll GetTu() const { 
+        return tu; 
+    }
+    ll GetMau() const {
+         return mau; 
+        }
     bool operator<(const PhanSo &khac) const
     {
         return (ll)this->tu * khac.mau < (ll)khac.tu * this->mau;
@@ -143,7 +140,7 @@ public:
     PhanSo TinhTong() const
     {
         PhanSo tong(0, 1);
-        for (const auto &ps : ds)
+        for ( auto &ps : ds)
             tong = tong.cong(ps);
         return tong;
     }

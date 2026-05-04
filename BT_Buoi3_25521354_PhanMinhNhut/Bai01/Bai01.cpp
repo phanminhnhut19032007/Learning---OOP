@@ -7,11 +7,7 @@ private:
     double x, y;
 
 public:
-    Diem()
-    {
-        this->x = 0;
-        this->y = 0;
-    }
+  
     Diem(double xx = 0, double yy = 0) : x(xx), y(yy) {}
 
     void NhapDiem()
@@ -66,6 +62,7 @@ private:
     Diem A, B, C;
 
 public:
+
     void NhapDinh()
     {
         cout << "Nhap dinh A: \n";
@@ -159,10 +156,79 @@ public:
         B.Quay(goc);
         C.Quay(goc);
     }
+    void XuatTamGiac()
+    {
+        cout << "Toa do cac dinh cua tam giac la:\n";
+        cout << "A"; A.XuatDiem(); cout << "\n";
+        cout << "B"; B.XuatDiem(); cout << "\n";
+        cout << "C"; C.XuatDiem(); cout << "\n";
+    }
 };
 
 int main()
 {
+cTamGiac tg;
+    int luaChon;
+    bool daNhap = false;
 
+    do
+    {
+        cout << "\n================= MENU QUAN LY TAM GIAC =================" << endl;
+        cout << "1. Nhap toa do 3 dinh cua tam giac" << endl;
+        cout << "2. Xuat toa do 3 dinh tam giac" << endl;
+        cout << "3. Kiem tra loai tam giac" << endl;
+        cout << "4. Tinh chu vi tam giac" << endl;
+        cout << "5. Tinh dien tich tam giac" << endl;
+        cout << "6. Tinh tien tam giac" << endl;
+        cout << "7. Phong to tam giac" << endl;
+        cout << "8. Thu nho tam giac" << endl;
+        cout << "9. Quay tam giac" << endl;
+        cout << "0. Thoat chuong trinh" << endl;
+        cout << "=========================================================" << endl;
+        cout << "Moi ban nhap lua chon: ";
+        cin >> luaChon;
+        if (!daNhap && luaChon > 1 && luaChon <= 9) {
+            cout << "Vui long nhap tam giac (Chuc nang 1) truoc khi thao tac!\n";
+            continue; 
+        }
+
+        switch (luaChon)
+        {
+        case 1:
+            tg.NhapDinh();
+            daNhap = true;
+            break;
+        case 2:
+            tg.XuatTamGiac();
+            break;
+        case 3:
+            tg.KiemTraTamGiac();
+            break;
+        case 4:
+            cout << "Chu vi tam giac la: " << tg.TinhChuVi() << endl;
+            break;
+        case 5:
+            cout << "Dien tich tam giac la: " << tg.TinhDienTich() << endl;
+            break;
+        case 6:
+            tg.TinhTienTamGiac();
+            break;
+        case 7:
+            tg.PhongToTamGiac();
+            break;
+        case 8:
+            tg.ThuNhoTamGiac();
+            break;
+        case 9:
+            tg.QuayTamGiac();
+            break;
+        case 0:
+            cout << "Cam on ban da su dung chuong trinh! Tam biet.\n";
+            break;
+        default:
+            cout << "Lua chon khong hop le. Vui long chon lai tu 0 den 9!\n";
+            break;
+        }
+    } while (luaChon != 0);
     return 0;
 }
