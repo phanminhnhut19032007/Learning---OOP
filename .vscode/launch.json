@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "d:/IT002/BT_Buoi2_25521354_PhanMinhNhut/Bai06",
-      "program": "d:/IT002/BT_Buoi2_25521354_PhanMinhNhut/Bai06/build/Debug/outDebug",
+      "cwd": "d:/IT002/BT_Buoi3_25521354_PhanMinhNhut/Bai06",
+      "program": "d:/IT002/BT_Buoi3_25521354_PhanMinhNhut/Bai06/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

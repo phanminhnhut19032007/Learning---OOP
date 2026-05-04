@@ -4,11 +4,8 @@
 #include <cmath>
 
 using namespace std;
-
-// Sử dụng long long cho toàn bộ để tránh tràn số khi tính toán trung gian
 typedef long long ll;
 
-// Hàm hỗ trợ tìm ước chung lớn nhất
 ll TimUCLN(ll a, ll b)
 {
     a = abs(a);
@@ -22,7 +19,6 @@ ll TimUCLN(ll a, ll b)
     return a;
 }
 
-// Hàm hỗ trợ kiểm tra số nguyên tố
 bool LaSoNguyenTo(ll n)
 {
     if (n < 2)
@@ -38,7 +34,7 @@ bool LaSoNguyenTo(ll n)
 class PhanSo
 {
 private:
-    ll tu, mau; // Chuyển sang long long
+    ll tu, mau; 
 public:
     PhanSo(ll t = 0, ll m = 1)
     {
@@ -58,6 +54,8 @@ public:
             mau = -mau;
         }
     }
+
+
 
     void Nhap()
     {
@@ -81,14 +79,20 @@ public:
             cout << tu << "/" << mau;
     }
 
-    ll GetTu() const { return tu; }
-    ll GetMau() const { return mau; }
+    ll GetTu() const { 
+        return tu; 
+    }
 
-    // So sánh bằng nhân chéo để đảm bảo chính xác tuyệt đối
+
+    ll GetMau() const {
+         return mau; 
+        }
     bool operator<(const PhanSo &khac) const
     {
         return (ll)this->tu * khac.mau < (ll)khac.tu * this->mau;
     }
+
+
 
     bool operator>(const PhanSo &khac) const
     {
@@ -101,6 +105,8 @@ public:
         ll mauMoi = (ll)mau * khac.mau;
         return PhanSo(tuMoi, mauMoi);
     }
+
+
 };
 
 class cDSPhanSo
@@ -124,6 +130,8 @@ public:
         }
     }
 
+
+
     void XuatDS() const
     {
         if (ds.empty())
@@ -140,13 +148,15 @@ public:
         cout << endl;
     }
 
+
     PhanSo TinhTong() const
     {
         PhanSo tong(0, 1);
-        for (const auto &ps : ds)
+        for ( auto &ps : ds)
             tong = tong.cong(ps);
         return tong;
     }
+
 
     PhanSo TimMax() const
     {
@@ -157,6 +167,7 @@ public:
     {
         return *min_element(ds.begin(), ds.end());
     }
+
 
     void TimPhanSoTuNguyenToMax() const
     {
@@ -185,6 +196,8 @@ public:
         }
     }
 
+
+
     void SapXepTang()
     {
         sort(ds.begin(), ds.end());
@@ -195,7 +208,11 @@ public:
         sort(ds.begin(), ds.end(), greater<PhanSo>());
     }
 
-    bool IsEmpty() const { return ds.empty(); }
+    bool IsEmpty() const 
+    {
+        return ds.empty(); 
+    }
+
 };
 
 int main()
@@ -219,9 +236,12 @@ int main()
 
         if (luaChon >= 2 && luaChon <= 7 && danhSach.IsEmpty())
         {
+            
             cout << "Vui long nhap danh sach truoc (Chon 1)!\n";
             continue;
         }
+
+
 
         switch (luaChon)
         {
