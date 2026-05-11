@@ -34,7 +34,8 @@ bool LaSoNguyenTo(ll n)
 class PhanSo
 {
 private:
-    ll tu, mau; 
+    ll tu, mau;
+
 public:
     PhanSo(ll t = 0, ll m = 1)
     {
@@ -54,8 +55,6 @@ public:
             mau = -mau;
         }
     }
-
-
 
     void Nhap()
     {
@@ -79,20 +78,19 @@ public:
             cout << tu << "/" << mau;
     }
 
-    ll GetTu() const { 
-        return tu; 
+    ll GetTu() const
+    {
+        return tu;
     }
 
-
-    ll GetMau() const {
-         return mau; 
-        }
+    ll GetMau() const
+    {
+        return mau;
+    }
     bool operator<(const PhanSo &khac) const
     {
-        return (ll)this->tu * khac.mau < (ll)khac.tu * this->mau;
+        return this->tu * khac.mau < khac.tu * this->mau;
     }
-
-
 
     bool operator>(const PhanSo &khac) const
     {
@@ -101,12 +99,10 @@ public:
 
     PhanSo cong(PhanSo khac) const
     {
-        ll tuMoi = (ll)tu * khac.mau + (ll)khac.tu * mau;
-        ll mauMoi = (ll)mau * khac.mau;
+        ll tuMoi = tu * khac.mau + khac.tu * mau;
+        ll mauMoi = mau * khac.mau;
         return PhanSo(tuMoi, mauMoi);
     }
-
-
 };
 
 class cDSPhanSo
@@ -130,8 +126,6 @@ public:
         }
     }
 
-
-
     void XuatDS() const
     {
         if (ds.empty())
@@ -148,15 +142,13 @@ public:
         cout << endl;
     }
 
-
     PhanSo TinhTong() const
     {
         PhanSo tong(0, 1);
-        for ( auto &ps : ds)
+        for (auto &ps : ds)
             tong = tong.cong(ps);
         return tong;
     }
-
 
     PhanSo TimMax() const
     {
@@ -167,7 +159,6 @@ public:
     {
         return *min_element(ds.begin(), ds.end());
     }
-
 
     void TimPhanSoTuNguyenToMax() const
     {
@@ -196,8 +187,6 @@ public:
         }
     }
 
-
-
     void SapXepTang()
     {
         sort(ds.begin(), ds.end());
@@ -208,11 +197,10 @@ public:
         sort(ds.begin(), ds.end(), greater<PhanSo>());
     }
 
-    bool IsEmpty() const 
+    bool IsEmpty() const
     {
-        return ds.empty(); 
+        return ds.empty();
     }
-
 };
 
 int main()
@@ -236,12 +224,10 @@ int main()
 
         if (luaChon >= 2 && luaChon <= 7 && danhSach.IsEmpty())
         {
-            
+
             cout << "Vui long nhap danh sach truoc (Chon 1)!\n";
             continue;
         }
-
-
 
         switch (luaChon)
         {

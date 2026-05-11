@@ -206,8 +206,6 @@ int main()
         cout << "=========================================================" << endl;
         cout << "Moi ban nhap lua chon: ";
         cin >> luaChon;
-
-        // Chặn người dùng gọi các hàm xử lý nếu mảng chưa được khởi tạo (ngoại trừ lựa chọn 0, 1, 2)
         if (mang.IsEmpty() && luaChon >= 3 && luaChon <= 9) {
             cout << "Mang dang rong! Vui long khoi tao mang (Chon 1 hoac 2) truoc.\n";
             continue;

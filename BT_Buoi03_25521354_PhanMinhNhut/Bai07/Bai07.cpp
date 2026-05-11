@@ -152,7 +152,6 @@ public:
 
     void NhanVienTuoiCaoNhat() {
         if (n == 0) return;
-        
         int minNamSinh = danhSach[0].LayNamSinh();
         
         for (int i = 1; i < n; i++) {
